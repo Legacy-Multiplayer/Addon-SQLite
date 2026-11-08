@@ -34,6 +34,12 @@ Paths are relative to the server's `resources` folder. Never accept SQL text dir
 
 See [API](docs/API.md), [building](docs/BUILDING.md) and [account persistence](examples/accounts.lua).
 
+## Try saving and loading a player
+
+The [working player example](examples/README.md) loads money on connect, creates missing records, saves changes and restores money after reconnecting or respawning. It includes `/balance`, `/earn`, `/save` and `/load`, with handling for async failures and player-ID reuse.
+
+Copy `examples/accounts.lua` into your script's module directory and require it before `onMainScriptInit`. Enable Addon-Player and Addon-Messaging alongside Addon-SQLite. Join with a new name, wait for the $1,000 starting balance, use `/earn`, wait for confirmation, then reconnect: the balance should load as $1,025. See the [setup and test instructions](examples/README.md) before integrating it into an existing gamemode.
+
 ## Dependencies and lifecycle
 
 Clone with `git clone --recurse-submodules <repository-url>` or run `git submodule update --init --recursive` in an existing checkout. `SDK` is pinned to a server-compatible commit. API version remains **1**, but the fingerprint must match: rebuild all plugins and the server together when updating it.
