@@ -1,0 +1,2 @@
+# Preserve the upstream amalgamation byte-for-byte, including its whitespace.
+vendor/sqlite/* -text -whitespace
