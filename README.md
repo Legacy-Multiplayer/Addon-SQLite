@@ -42,7 +42,7 @@ Copy `examples/accounts.lua` into your script's module directory and require it 
 
 ## Dependencies and lifecycle
 
-Clone with `git clone --recurse-submodules <repository-url>` or run `git submodule update --init --recursive` in an existing checkout. `SDK` is pinned to a server-compatible commit. API version remains **1**, but the fingerprint must match: rebuild all plugins and the server together when updating it.
+Clone with `git clone --recurse-submodules https://github.com/Legacy-Multiplayer/Addon-SQLite.git` or run `git submodule update --init --recursive` in an existing checkout. `SDK` is pinned to a server-compatible commit. API version remains **1**, but the fingerprint must match: rebuild all plugins and the server together when updating it.
 
 SQLite is vendored from its official amalgamation; provenance is in `THIRD_PARTY.md`. Normal open, SQL and explicit close operations run on workers; unload waits for owned work. Finalization of idle or cancelled connections may run during main-thread cleanup. Script exit cancels queued operations, invalidates callbacks and retires connections when in-flight work releases them. Handles are not reused during one plugin lifetime. An async result may outlive a player connection: revalidate that the result still belongs to the intended player before applying it.
 
